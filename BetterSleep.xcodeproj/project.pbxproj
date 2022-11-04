@@ -14,6 +14,7 @@
 		323648632910EA3E00795816 /* BetterSleepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323648622910EA3E00795816 /* BetterSleepTests.swift */; };
 		3236486D2910EA3E00795816 /* BetterSleepUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236486C2910EA3E00795816 /* BetterSleepUITests.swift */; };
 		3236486F2910EA3E00795816 /* BetterSleepUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236486E2910EA3E00795816 /* BetterSleepUITestsLaunchTests.swift */; };
+		3236487C2912454400795816 /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3236487B2912454400795816 /* SleepCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		323648682910EA3E00795816 /* BetterSleepUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterSleepUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3236486C2910EA3E00795816 /* BetterSleepUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSleepUITests.swift; sourceTree = "<group>"; };
 		3236486E2910EA3E00795816 /* BetterSleepUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSleepUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3236487B2912454400795816 /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				323648512910EA3D00795816 /* BetterSleepApp.swift */,
 				323648532910EA3D00795816 /* ContentView.swift */,
+				3236487B2912454400795816 /* SleepCalculator.mlmodel */,
 				323648552910EA3E00795816 /* Assets.xcassets */,
 				323648572910EA3E00795816 /* Preview Content */,
 			);
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3236487C2912454400795816 /* SleepCalculator.mlmodel in Sources */,
 				323648542910EA3D00795816 /* ContentView.swift in Sources */,
 				323648522910EA3D00795816 /* BetterSleepApp.swift in Sources */,
 			);

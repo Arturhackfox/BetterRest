@@ -5,20 +5,25 @@
 //  Created by Arthur Sh on 01.11.2022.
 //
 
+import CoreML
 import SwiftUI
 
 struct ContentView: View {
     
-    @State private var date = Date.now
+    @State private var wakeUp = Date.now
     @State private var hoursOfSleep = 8.0
     @State private var coffeAmount = 1
+    
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    @State private var showingAlert = false
     
     var body: some View {
         NavigationStack{
             VStack{
                 Text("When do you want to wake up?")
                     .font(.headline)
-                DatePicker("wake up", selection: $date, displayedComponents: .hourAndMinute)
+                DatePicker("wake up", selection: $wakeUp, displayedComponents: .hourAndMinute)
                     .labelsHidden()
                 
                 Text("Desired amount of sleep")
@@ -31,11 +36,34 @@ struct ContentView: View {
             .toolbar{
                 Button("Culculate", action: calculate)
             }
+            .alert(alertTitle, isPresented: $showingAlert){
+                Button("OK") {}
+            }message: {
+                Text(alertMessage)
+            }
         }
     }
     
     func calculate() {
-        
+        do{
+            let config = MLModelConfiguration()
+            let model = try SleepCalculator(configuration: config)
+            
+            let components = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
+            let hour = (components.hour ?? 0) * 60 * 60
+            let minute = (components.minute ?? 0) * 60
+            
+            let prediction = try model.prediction(wake: Double(hour + minute), estimatedSleep: hoursOfSleep, coffee: Double(coffeAmount))
+            
+            let sleepTime = wakeUp - prediction.actualSleep
+            alertTitle = "You ideal time to go to bed..."
+            alertMessage = sleepTime.formatted(date: .omitted, time: .shortened)
+            
+        } catch {
+            alertTitle = "Error"
+            alertMessage = "Sorry, something went wrong"
+        }
+        showingAlert = true
     }
 }
 
